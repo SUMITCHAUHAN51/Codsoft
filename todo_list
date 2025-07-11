@@ -1,0 +1,16 @@
+import os
+
+TASKS_FILENAME = "todo_list.txt"
+
+def fetch_task_list():
+    """Load tasks from the file if it exists, otherwise return an empty list."""
+    if os.path.isfile(TASKS_FILENAME):
+        with open(TASKS_FILENAME, "r") as f:
+            return [task.strip() for task in f]
+    return []
+
+def store_task_list(task_list):
+    """Write the current list of tasks back to the file."""
+    with open(TASKS_FILENAME, "w") as f:
+        for task in task_list:
+            f.write(f"{task}\n")
